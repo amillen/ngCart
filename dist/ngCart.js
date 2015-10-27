@@ -254,8 +254,8 @@ angular.module('ngCart', ['ngCart.directives'])
             var quantityInt = parseInt(quantity);
             if (quantityInt % 1 === 0){
                 if (relative === true){
-					if (quantityMax >= (this._quantity + quantityInt)) {
-                        this._quantity += quantityInt;
+			if (typeof quantityMax === "undefined" || quantityMax >= (this._quantity + quantityInt)) {
+                        	this._quantity += quantityInt;
                     }
                 } else {
                     this._quantity = quantityInt;
