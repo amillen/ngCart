@@ -25,8 +25,8 @@ describe('ngCart module', function() {
             var $scope;
             var controller;
 
-            function addItem(id, name, price, quantity, data){
-                $scope.ngCart.addItem(id, name, price, quantity, data);
+            function addItem(id, name, price, quantity, quantityMax, data){
+                $scope.ngCart.addItem(id, name, price, quantity, quantityMax, data);
             }
 
             beforeEach(function() {
@@ -41,7 +41,7 @@ describe('ngCart module', function() {
 
 
             it('should be able to add an item', function() {
-                addItem(1, 'Test Item', 10, 2);
+                addItem(1, 'Test Item', 10, 2, 5);
                 expect($scope.ngCart.getItems().length).toEqual(1);
             });
 
@@ -64,9 +64,9 @@ describe('ngCart module', function() {
 
                     $scope.ngCart.setTaxRate(7.5);
                     $scope.ngCart.setShipping(12.50);
-                    addItem(1, 'Work boots', 189.99, 1);
-                    addItem(2, 'Hockey gloves', 85, 2);
-                    addItem('cpBow', 'Compound bow', 499.95, 1);
+                    addItem(1, 'Work boots', 189.99, 1, 2);
+                    addItem(2, 'Hockey gloves', 85, 2, 99);
+                    addItem('cpBow', 'Compound bow', 499.95, 1, 1);
                 });
 
 
