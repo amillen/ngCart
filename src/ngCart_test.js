@@ -174,8 +174,14 @@ describe('ngCart module', function() {
 
                 it('should relatively update quantity', function() {
                     expect(ngCartItem.getQuantity()).toEqual(1);
-                    ngCartItem.setQuantity(1, true);
+                    ngCartItem.setQuantity(1, true, 5);
                     expect(ngCartItem.getQuantity()).toEqual(2);
+                });
+				
+				it('should not update quantity above max', function() {
+                    expect(ngCartItem.getQuantity()).toEqual(1);
+                    ngCartItem.setQuantity(1, true, 1);
+                    expect(ngCartItem.getQuantity()).toEqual(1);
                 });
 
 
@@ -184,7 +190,7 @@ describe('ngCart module', function() {
                 });
 
                 it('should update total after quantity change', function() {
-                    ngCartItem.setQuantity(1, true);
+                    ngCartItem.setQuantity(1, true, 5);
                     expect(ngCartItem.getTotal()).toEqual( 79.98 );
                 });
 
